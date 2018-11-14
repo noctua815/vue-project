@@ -1,0 +1,135 @@
+.tab-triggers {
+    position: relative;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    @include respond-to($bigTablet) {
+        display: block;
+    }
+
+    &:not(.fixed) {
+        @include respond-to($bigTablet) {
+            height: 0;
+        }
+    }
+
+    &.fixed {
+        height: auto;
+        opacity: 1;
+        visibility: visible;
+
+        @include respond-to($bigTablet) {
+            margin-top: rem(4);
+        }
+    }
+
+    &.triggers-init {
+        opacity: 1;
+        visibility: visible;
+        @include respond-to($bigTablet) {
+            height: auto;
+        }
+    }
+
+    &-wr {
+        position: relative;
+        display: flex;
+        padding: 0 0 rem(18);
+        @include respond-to($bigTablet) {
+            margin: 0 rem(-40);
+            justify-content: center;
+        }
+        @include respond-to($bigPhone) {
+            margin: 0 rem(-24);
+        }
+    }
+
+    &--compact {
+        .tab-triggers-wr {
+            padding: 0 0 rem(18);
+        }
+
+        .tab-trigger {
+            min-width: rem(60);
+        }
+    }
+}
+
+.tab-trigger {
+    min-width: rem(74);
+    @include FontFiraBold;
+    @include font(13);
+    letter-spacing: rem(0.3);
+    text-transform: uppercase;
+    text-align: center;
+    color: $white;
+    opacity: 0.5;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+    @include respond-to($bigTablet) {
+        @include font(16);
+        letter-spacing: rem(0.4);
+    }
+
+    & + & {
+        margin-left: rem(30);
+    }
+
+    &:hover {
+        opacity: 0.7;
+    }
+
+    a {
+        color: $white;
+    }
+
+    &.is-active {
+        opacity: 1;
+        cursor: default;
+
+        a {
+            cursor: default;
+        }
+    }
+}
+
+.tab-slider {
+    position: absolute;
+    left: 12%;
+    bottom: 0;
+    width: 78%;
+    height: rem(4);
+    background-image: url("/img/dots.png");
+    background-position: center;
+    background-size: 10px 2px;
+    background-repeat: repeat-x;
+    @include respond-to($bigTablet) {
+        width: 100%;
+        left: 0;
+    }
+
+    &-line {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: rem(54);
+        height: rem(4);
+        background-color: $aqua-marine;
+        @include respond-to($bigTablet) {
+            width: rem(136);
+        }
+    }
+}
+
+.pse-tabs {
+    .tab-trigger {
+        min-width: rem(136);
+        text-align: center;
+    }
+
+    .tab-trigger + .tab-trigger {
+        margin-left: rem(8);
+    }
+}

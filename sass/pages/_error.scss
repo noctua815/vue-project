@@ -1,0 +1,63 @@
+.ep {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    @include respond-to($bigTablet) {
+        padding-top: rem(85);
+    }
+
+    &__wr {
+        text-align: center;
+    }
+
+    &__number {
+        @include FontFiraBold;
+        @include font(300);
+        line-height: 1.13;
+        letter-spacing: rem(1.3px);
+        color: rgba($white, 0.45);
+        @include respond-to($bigTablet) {
+            @include font(144);
+            color: rgba($white, 0.3);
+            line-height: rem(208);
+        }
+    }
+
+    &__text {
+        margin-top: rem(-32);
+        @include FontFiraBold;
+        @include font(13);
+        letter-spacing: rem(0.3);
+        text-transform: uppercase;
+        @include respond-to($bigTablet) {
+            @include FontFira;
+            @include font(16);
+            text-transform: none;
+            line-height: rem(24);
+        }
+    }
+
+    &__product-btn {
+        max-width: rem(232);
+        margin: rem(62) auto 0;
+        @include respond-to($bigTablet) {
+            margin-top: rem(53);
+        }
+    }
+
+    &__waste-link {
+        margin-top: rem(18);
+        @include respond-to($bigTablet) {
+            margin-top: rem(47);
+        }
+
+        & > a {
+            line-height: rem(23);
+            @include respond-to($bigTablet) {
+                color: $white;
+            }
+        }
+    }
+}

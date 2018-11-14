@@ -1,0 +1,214 @@
+.pse-head,
+h1 {
+    @include FontFiraBold;
+    @include font(32);
+    color: $white;
+    line-height: 1.19;
+    @include respond-to($bigTablet) {
+        @include font(24);
+        line-height: 1.21;
+    }
+}
+
+h2,
+.pse-subhead,
+.pse-subhead > * {
+    @include FontFiraBold;
+    @include font(24);
+    color: $white;
+    line-height: 1.25;
+    @include respond-to($bigTablet) {
+        @include font(18);
+        line-height: 1.5;
+    }
+}
+
+h3 {
+    @include FontFiraBold;
+    @include font(24);
+    color: rgba($white, 0.5);
+    line-height: 1.25;
+    @include respond-to($bigTablet) {
+        @include font(16);
+        line-height: 1.5;
+    }
+}
+
+h4 {
+    @include font(16);
+    color: $white;
+    line-height: 1.88;
+}
+
+p {
+    @include font(16);
+    line-height: 1.5;
+    color: $white;
+}
+
+ul {
+    @include font(16);
+    line-height: 1.5;
+    color: $white;
+
+    li {
+        position: relative;
+        padding-left: rem(36);
+        @include respond-to($bigTablet) {
+            padding-left: rem(24);
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: rem(8);
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: $white;
+            @include respond-to($bigTablet) {
+                width: 6px;
+                height: 6px;
+            }
+        }
+    }
+
+    li + li {
+        margin-top: rem(14);
+    }
+}
+
+.link {
+    @include FontFiraBold;
+    @include font(16);
+    color: $white;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $aqua-marine;
+    }
+}
+
+.border-link {
+    @include FontFiraBold;
+    color: rgba($white, 0.7);
+    text-decoration: underline;
+    text-decoration-skip: ink;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $aqua-marine;
+    }
+}
+
+.bold-link {
+    @include FontFiraBold;
+    @include font(16);
+    color: $white;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: $aqua-marine;
+    }
+}
+
+.small-link {
+    @include FontFiraBold;
+    @include font(13);
+    color: rgba($white, 0.7);
+    text-decoration: underline;
+    text-decoration-skip: ink;
+    transition: color 0.3s ease;
+    @include respond-to($bigTablet) {
+        @include font(16);
+    }
+
+    &:hover {
+        color: $white;
+    }
+}
+
+.text-content {
+    @include font(16);
+    line-height: 1.5;
+    color: $white;
+
+    *:last-child {
+        margin-bottom: 0;
+    }
+
+    a {
+        color: $white;
+        text-decoration: underline;
+        text-decoration-skip: ink;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $aqua-marine;
+        }
+
+        &:visited {
+            opacity: 0.7;
+        }
+    }
+
+    ol,
+    p,
+    ul {
+        margin-bottom: rem(32);
+        @include respond-to($bigTablet) {
+            margin-bottom: rem(20);
+        }
+
+        & + h2 {
+            margin-top: rem(48);
+            @include respond-to($bigTablet) {
+                margin-top: rem(11);
+            }
+        }
+    }
+
+    h2 + * {
+        margin-top: rem(22);
+        @include respond-to($bigTablet) {
+            margin-top: rem(11);
+        }
+    }
+
+    h3 + * {
+        margin-top: rem(16);
+        @include respond-to($bigTablet) {
+            margin-top: rem(11);
+        }
+    }
+
+    h2 {
+        @include respond-to($bigTablet) {
+            opacity: 0.5;
+        }
+    }
+}
+
+.sub-title {
+    @include FontFiraBold;
+    @include font(16);
+    line-height: 1.43;
+    color: $white;
+    text-transform: uppercase;
+}
+
+.small-title {
+    @include FontFiraBold;
+    @include font(13);
+    line-height: 1.38;
+    color: $white;
+    letter-spacing: rem(0.3);
+    text-transform: uppercase;
+
+    &--light {
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,36 @@
+
+// Body
+$body-bg: #f5f8fa;
+
+// Typography
+$font-family: "Fira Sans", sans-serif;
+$font-size: 16;
+$font-size-base: 1rem;
+$line-height-base: 1.5;
+
+// Colors
+$white: #ffffff;
+$aqua-marine: #34d9c3;
+$aqua-marine-two: #50e3c2;
+$slate: #446370;
+$brick: #bb1d1d;
+$robin-egg-blue: #8cf2ff;
+$seaweed-green: #309d69;
+$bluey-green: #28a292;
+$dark-peach: #dd6b6b;
+
+$body-width: 1280;
+$body-height: 640;
+$body-indent: 24px;
+
+// Media queries
+$extraSmall: 340px;
+$smallPhone: 400px;
+$bigPhone: 480px;
+$smallTablet: 768px;
+$bigTablet: 1024px;
+$smallDesktop: 1280px;
+$middleDesktop: 1366px;
+$bigDesktop: 1440px;
+$largeDesktop: 1600px;
+$extraDesktop: 1900px;

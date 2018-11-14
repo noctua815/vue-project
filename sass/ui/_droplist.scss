@@ -1,0 +1,55 @@
+.droplist {
+    & + & {
+        margin-top: rem(24);
+    }
+
+    &__head {
+        user-select: none;
+        
+        &-text {
+            position: relative;
+            display: inline-block;
+            padding-right: rem(25);
+            @include FontFiraBold;
+            @include font(13);
+            line-height: rem(18);
+            letter-spacing: rem(0.3);
+            text-transform: uppercase;
+            color: rgba($white, 0.5);
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: rem(-1);
+                right: 0;
+                width: rem(20);
+                height: rem(20);
+                background-image: svg-load('../svg/more-arrow.svg', fill=$white);
+                @include standart-bg;
+                transition: transform 0.2s ease;
+            }
+        }
+    }
+
+    &__body {
+        padding-top: rem(21);
+    }
+
+    &.is-opened {
+        .droplist__head-text {
+            &:after {
+                transform: rotate(180deg);
+            }
+        }
+    }
+}
+
+.droplist-item {
+    @include font(16);
+    color: $white;
+    line-height: rem(18);
+
+    & + & {
+        margin-top: rem(16);
+    }
+}

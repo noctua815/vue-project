@@ -1,0 +1,93 @@
+// MIXINS
+// Object fit mixin
+@mixin object-fit($fit: fill, $position: null) {
+    -o-object-fit: $fit;
+    object-fit: $fit;
+    @if $position {
+        -o-object-position: $position;
+        object-position: $position;
+        font-family: 'object-fit: #{$fit}; object-position: #{$position}';
+    } @else {
+        font-family: 'object-fit: #{$fit}';
+    }
+}
+// Standart svg-load background style
+@mixin standart-bg() {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+// Response
+@mixin respond-to($media, $type: 'max') {
+    @if $type == 'max' {
+        @media only screen and (max-width: $media) {
+            @content;
+        }
+    }
+
+    @if $type == 'min' {
+        @media only screen and (min-width: $media) {
+            @content;
+        }
+    }
+}
+// Placeholder style
+@mixin optional-at-root($sel) {
+    @at-root #{if(not &, $sel, selector-append(&, $sel))} {
+        @content;
+    }
+}
+@mixin placeholder {
+    @include optional-at-root ('::-webkit-input-placeholder') {
+        @content;
+    }
+    @include optional-at-root (':-moz-placeholder') {
+        @content;
+    }
+    @include optional-at-root ('::-moz-placeholder') {
+        @content;
+    }
+    @include optional-at-root (':-ms-input-placeholder') {
+        @content;
+    }
+}
+// Font size to rem
+@mixin font ($size) {
+    font-size: $size + px;
+    font-size: ($size/$font-size) + rem;
+}
+// FUNCTIONS
+@function rem($val) {
+    @return #{$val / $font-size}rem;
+}
+// Pixels to vw
+@function vw($val) {
+    @return #{$val / $body-width * 100}vw;
+}
+// Pixels to vh
+@function vh($val) {
+    @return #{$val / $body-height * 100}vh;
+}
+// 100vh fix
+// @mixin vh-fix {
+//     @media (max-device-aspect-ratio: 3/4) {
+//         height: calc(100vw * 1.333);
+//         border: 1px solid red;
+//     }
+//     @media (max-device-aspect-ratio: 2/3) {
+//         height: calc(100vw * 1.5);
+//         border: 1px solid green;
+//     }
+//     @media (max-device-aspect-ratio: 3/5) {
+//         height: calc(100vw * 1.666);
+//         border: 1px solid white;
+//     }
+//     @media (max-device-aspect-ratio: 5/8) {
+//         height: calc(100vw * 1.777);
+//         border: 1px solid yellow;
+//     }
+//     @media (max-device-aspect-ratio: 9/16) {
+//         height: calc(100vw * 1.777);
+//         border: 1px solid black;
+//     }
+// }

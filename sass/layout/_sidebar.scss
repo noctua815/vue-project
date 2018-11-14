@@ -1,0 +1,68 @@
+.sidebar {
+    position: absolute;
+    width: rem(140);
+    top: vh(265);
+    left: rem(24);
+    z-index: 10;
+
+    &__top {
+        margin-bottom: vh(68);
+    }
+
+    &__item {
+        overflow: hidden;
+        margin-bottom: rem(8);
+
+        &.is-active {
+            .sidebar__link {
+                transform: translateX(1.1rem);
+
+                &:before {
+                    opacity: 1;
+                    transition: opacity 0.3s ease 0.2s;
+                }
+            }
+        }
+
+        &--order {
+            height: rem(20);
+        }
+    }
+
+    &__link {
+        position: relative;
+        display: block;
+        @include FontFiraBold;
+        @include font(13);
+        padding: rem(3) 0;
+        line-height: 1;
+        letter-spacing: rem(0.3);
+        text-transform: uppercase;
+        color: rgba($white, 0.5);
+        transform: translateX(0);
+        transition: all 0.3s ease-in;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: -1.1rem;
+            top: rem(2.5);
+            width: rem(14);
+            height: rem(14);
+            background: svg-load('../svg/polygon.svg', stroke=$aqua-marine);
+            @include standart-bg;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        &:hover {
+            color: $white;
+        }
+
+        &--order {
+            span {
+                margin-left: rem(12);
+            }
+        }
+    }
+}

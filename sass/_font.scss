@@ -1,0 +1,29 @@
+@font-face {
+    font-family: 'Fira Sans Regular';
+    src: url("/fonts/Firasansregular.woff2") format('woff2'),
+         url("/fonts/Firasansregular.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face {
+    font-family: 'Fira Sans Medium';
+    src: url("/fonts/Firasansmedium.woff2") format('woff2'),
+         url("/fonts/Firasansmedium.woff") format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@mixin FontFira {
+    font-family: 'Fira Sans Regular', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+}
+
+@mixin FontFiraBold {
+    font-family: 'Fira Sans Medium', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+}

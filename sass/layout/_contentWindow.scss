@@ -1,0 +1,368 @@
+.cw {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    @include respond-to($bigTablet) {
+        height: auto;
+        min-height: 100%;
+    }
+
+    &-wr {
+        position: relative;
+        height: 100%;
+        margin-left: 0;
+        transition: all 0.4s ease;
+    }
+
+    &-bg {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        display: flex;
+        width: 0;
+        height: 100%;
+        background-color: $slate;
+        transform-origin: center;
+        transition: all 0.4s ease;
+    }
+
+    &-content {
+        position: relative;
+        height: 100%;
+        z-index: 5;
+        // padding: rem(40) vw(24) rem(54) 0;
+        padding: rem(40) vh(24) 0 0;
+        transition: all 0.4s ease 0.3s;
+        @include respond-to($bigTablet) {
+            padding: 0;
+        }
+
+        &-wr {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            &:before {
+                content: '';
+                position: absolute;
+                bottom: rem(36);
+                right: 0;
+                z-index: 1;
+                width: vw(720);
+                height: rem(30);
+                pointer-events: none;
+                transition: opacity 0.3s ease 0.3s;
+                background: linear-gradient(to top, $slate, rgba($slate, 0));
+                @include respond-to($bigTablet) {
+                    content: none;
+                }
+            }
+        }
+    }
+
+    &-scroll {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        height: calc(100% - 2.25rem);
+        padding-right: rem(35);
+        @include respond-to($bigTablet) {
+            padding: 0 rem(40);
+        }
+        @include respond-to($bigPhone) {
+            padding: 0 rem(24);
+        }
+    }
+
+    &--home {
+        .cw-bg {
+            right: vw(29);
+            width: vw(207);
+            min-width: 207px;
+            height: 100vh;
+            @include respond-to($bigTablet) {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .cw-wr {
+            margin-left: vw(236);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+            }
+        }
+
+        .cw-bg-line {
+            opacity: 0;
+        }
+
+        .cw-content {
+            padding-bottom: rem(20);
+            @include respond-to($bigTablet) {
+                padding-bottom: 0;
+            }
+        }
+
+        .cw-content-wr:before {
+            opacity: 0;
+            transition: none;
+        }
+    }
+
+    &--menu {
+        .cw-bg {
+            right: 0;
+            width: vw(1068);
+            height: 100vh;
+            @include respond-to($bigTablet) {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .cw-wr {
+            margin-left: vw(336);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+            }
+        }
+
+        .cw-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+    }
+
+    &--menu-full {
+        .cw-bg {
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .cw-wr {
+            margin-left: vw(336);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+            }
+        }
+
+        .cw-content {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+    }
+
+    &--content {
+        .cw-bg {
+            right: 0;
+            width: vw(1068);
+            height: vh(577);
+            @include respond-to($bigTablet) {
+                width: 100%;
+                height: calc(100vh + 3rem);
+            }
+        }
+
+        .cw-wr {
+            margin-left: vw(268);
+            padding-top: vh(63);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+                padding-top: rem(100);
+            }
+        }
+    }
+
+    &--full {
+        .cw-bg {
+            right: 0;
+            width: 100vw;
+            height: 100vh;
+            @include respond-to($bigTablet) {
+                height: calc(100vh + 3rem);
+            }
+        }
+
+        .cw-wr {
+            margin-left: vw(268);
+            padding-top: vh(120);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+                padding-top: rem(100);
+            }
+        }
+
+        .cw-content {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+    }
+
+    &--default {
+        opacity: 0;
+    }
+
+    &--contacts {
+        .cw-bg {
+            right: 0;
+            width: vw(1068);
+            height: 100vh;
+            @include respond-to($bigTablet) {
+                width: 100%;
+                height: calc(100vh + 3rem);
+            }
+        }
+
+        .cw-wr {
+            margin-left: vw(268);
+            padding-top: vh(63);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+                padding-top: rem(100);
+            }
+        }
+    }
+
+    &--404 {
+        .cw-bg {
+            right: 0;
+            width: vw(1068);
+            height: vh(577);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .cw-wr {
+            margin-left: vw(236);
+            @include respond-to($bigTablet) {
+                margin-left: 0;
+            }
+        }
+
+        .cw-bg-line {
+            opacity: 0;
+        }
+
+        .cw-content-wr:before {
+            opacity: 0;
+            transition: none;
+        }
+    }
+}
+
+.cw-bg {
+    overflow: hidden;
+}
+
+.cw-bg-line {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: rgba($white, 0.05);
+    transition: opacity 0.3s ease;
+    @include respond-to($bigTablet) {
+        display: none;
+    }
+
+    &:nth-child(1) {
+        left: vw(210);
+    }
+
+    &:nth-child(2) {
+        left: vw(418);
+    }
+
+    &:nth-child(3) {
+        left: vw(626);
+    }
+
+    &:nth-child(4) {
+        left: vw(834);
+    }
+
+    &:nth-child(5) {
+        left: vw(1039);
+    }
+
+    &:nth-child(6) {
+        left: vw(1251);
+    }
+}
+
+.cw-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    @include respond-to($bigTablet) {
+        position: fixed;
+        height: 100vh;
+        overflow: auto;
+    }
+
+    &.menu-opened {
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease 0.2s;
+    }
+}
+
+.cw-scroll.ps {
+    &:hover {
+        & > .ps__scrollbar-y-rail {
+            opacity: 1!important;
+        }
+
+        & > .ps__scrollbar-y-rail:hover {
+            & > .ps__scrollbar-y {
+                background: $white;
+            }
+        }
+    }
+
+    &.ps--active-y {
+        & > .ps__scrollbar-y-rail {
+            background: rgba(white, 0);
+        }
+    }
+
+    & > .ps__scrollbar-y-rail {
+        width: rem(8);
+        opacity: 1;
+        background: rgba(white, 0)!important;
+
+        &:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            z-index: -1;
+            width: 1px;
+            height: 100%;
+            transform: translateX(-50%);
+            background-color: rgba($white, 0.2);
+        }
+
+        & > .ps__scrollbar-y {
+            right: 0;
+            width: rem(8)!important;
+            border-radius: 0;
+            background-color: $white!important;
+        }
+    }
+
+    .ps__scrollbar-x-rail {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

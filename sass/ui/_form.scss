@@ -1,0 +1,313 @@
+input[type="text"],
+input[type="password"],
+input[type="tel"],
+input[type="email"] {
+    width: 100%;
+    @include FontFira;
+    @include font(16);
+    color: $white;
+    border-radius: 0;
+    border-bottom: 1px solid rgba($white, 0.5);
+    outline: none;
+    background-color: rgba(white, 0);
+    transition: border 0.3s ease;
+
+    &:focus {
+        border-color: $white;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 rem(40) $slate inset;
+    -webkit-text-fill-color: $white;
+}
+
+textarea {
+    width: 100%;
+    max-height: rem(124);
+    border: none;
+    padding: 0;
+    border-radius: 0;
+    border-bottom: 1px solid rgba($white, 0.5);
+    outline: none;
+    background-color: rgba(white, 0);
+    @include FontFira;
+    @include font(16);
+    color: $white;
+    line-height: 1.3;
+    resize: none;
+    transition: border 0.3s ease;
+
+    &:focus {
+        border-color: $white;
+    }
+}
+
+button {
+    display: block;
+    outline: none;
+    background: none;
+    border: none;
+    padding: 0;
+    border-radius: 0;
+}
+
+.btn,
+button.btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: rem(176);
+    height: rem(40);
+    overflow: hidden;
+    border: 1px solid $white;
+    border-radius: 2px;
+    color: $white;
+    transition: all 0.3s ease;
+    user-select: none;
+    cursor: pointer;
+
+    &__text {
+        position: relative;
+        @include FontFiraBold;
+        @include font(16);
+        // margin-bottom: rem(1);
+        padding: 0 rem(20);
+        white-space: nowrap;
+        user-select: none;
+        color: $white;
+        pointer-events: none;
+    }
+
+    &__progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.5s ease;
+        background: url("/img/loader.svg") no-repeat center/contain;
+    }
+
+    &:hover:not(.is-disable) {
+        color: $white;
+        border-color: $aqua-marine;
+        background-color: $aqua-marine;
+    }
+
+    &:active:not(.is-disable) {
+        border-color: $bluey-green;
+        background-color: $bluey-green;
+    }
+
+    &--progress {
+        pointer-events: none;
+        border-color: $bluey-green;
+        background-color: $bluey-green;
+
+        .btn__text {
+            opacity: 0;
+        }
+
+        .btn__progress {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &--full {
+        width: 100%;
+    }
+
+    &.is-disable {
+        opacity: 0.5;
+        cursor: default;
+    }
+}
+
+.form {
+    position: relative;
+}
+
+.form-field {
+    position: relative;
+    height: rem(34);
+    margin-bottom: rem(24);
+
+    &__label {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        @include font(16);
+        @include FontFiraBold;
+        color: rgba($white, 0.5);
+        transform: translate(0, -50%);
+        transform-origin: left center;
+        white-space: nowrap;
+        cursor: text;
+        transition: all 0.3s ease;
+
+        &-text {
+            pointer-events: none;
+        }
+    }
+
+    &__error {
+        position: absolute;
+        top: rem(-1);
+        left: 100%;
+        display: block;
+        width: rem(18);
+        height: rem(18);
+        margin-left: rem(10);
+        border: 1px solid $dark-peach;
+        border-radius: 50%;
+        text-align: center;
+        @include font(14);
+        color: $dark-peach;
+        padding-top: rem(2);
+        cursor: pointer;
+
+        &:after {
+            content: attr(data-error);
+            position: absolute;
+            left: rem(28);
+            top: 0;
+            white-space: nowrap;
+            opacity: 0;
+            @include font(16);
+            color: rgba($white, 0.5);
+            pointer-events: none;
+            transition: opacity 0.2s ease;
+        }
+
+        &:hover {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__input {
+        height: 100%;
+        @include font(16);
+        color: $white;
+    }
+
+    &.is-focus {
+        .form-field__label {
+            top: rem(-14);
+            transform: scale(0.8125) translate(-0.05rem, 0);
+        }
+    }
+
+    &.is-error {
+        .form-field__input {
+            border-color: $dark-peach;
+        }
+    }
+
+    &--textarea {
+        height: auto;
+        min-height: rem(32);
+        padding: rem(6) 0 0;
+
+        .form-field__input {
+            padding: 0 0 rem(6);
+        }
+    }
+}
+//Checkbox
+
+.checkbox {
+    position: relative;
+    font-size: 0;
+
+    &__input {
+        position: absolute;
+        visibility: hidden;
+        width: 0;
+    }
+
+    &__input:checked {
+        & + .checkbox__label {
+            &:after {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+
+    &__input:not(:checked) {
+        & + .checkbox__label {
+            &:hover {
+                &:before {
+                    border-color: $aqua-marine;
+                }
+            }
+        }
+    }
+
+    &__label {
+        display: inline-block;
+        position: relative;
+        padding-left: rem(26);
+        @include font(13);
+        @include FontFiraBold;
+        line-height: 1.4;
+        letter-spacing: rem(0.3);
+        color: $white;
+        cursor: pointer;
+
+        &:after,
+        &:before {
+            position: absolute;
+            content: '';
+            top: rem(-1);
+            left: 0;
+            width: rem(18);
+            height: rem(18);
+            transition: all 0.3s ease;
+        }
+
+        &:before {
+            border: 1px solid $white;
+            background-color: rgba($white, 0);
+            transition: border 0.3s ease;
+        }
+
+        &:after {
+            background-image: svg-load('../svg/checkbox-arrow.svg', stroke=$white);
+            background-size: rem(10) rem(10);
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+            backface-visibility: hidden;
+        }
+
+        a {
+            color: $white;
+            text-decoration: underline;
+            text-decoration-skip: ink;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $aqua-marine;
+            }
+
+            &:visited {
+                opacity: 0.7;
+            }
+        }
+    }
+}
+// Cash my visit button
+.cmv-btn {
+    opacity: 0;
+    visibility: hidden;
+}

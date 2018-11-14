@@ -1,0 +1,485 @@
+.promo {
+    position: relative;
+    @include FontFiraBold;
+    @include respond-to($bigTablet) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    @include respond-to($bigPhone) {}
+
+    &__big-text {
+        display: flex;
+        align-items: baseline;
+        color: rgba($white, 0.1);
+        @include respond-to($bigTablet) {
+            margin: rem(-32) rem(24) 0 0;
+        }
+        @include respond-to($bigPhone) {
+            position: absolute;
+            left: rem(-32);
+            top: rem(-78);
+            align-items: flex-start;
+            margin: 0;
+        }
+    }
+
+    &__value {
+        font-size: rem(96);
+        @include respond-to($bigPhone) {
+            @include font(120);
+        }
+    }
+
+    &__measure {
+        font-size: rem(64);
+        @include respond-to($bigPhone) {
+            @include font(56);
+        }
+    }
+
+    &__text {
+        max-width: rem(190);
+        margin-top: rem(12);
+        @include font(13);
+        line-height: 1.4;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: rgba($white, 0.5);
+        @include respond-to($bigTablet) {
+            margin-top: 0;
+            color: $white;
+        }
+        @include respond-to($bigPhone) {
+            margin-left: rem(16);
+        }
+    }
+
+    &--big {
+        .promo__text {
+            max-width: rem(210);
+        }
+    }
+
+    &--no-left {
+        .promo__big-text {
+            left: rem(-6);
+        }
+    }
+}
+
+.round-preview {
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    font-size: 0;
+    -webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+
+    &:hover:not(.round-preview--no-hover) {
+        .round-preview__border {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &:after {
+        content: '';
+        padding-top: 100%;
+        float: left;
+    }
+
+    &__border {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            width: calc(100% - 2px);
+            height: calc(100% - 2px);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        &:before {
+            border: 1px solid rgba($white, 0.6);
+            opacity: 1;
+        }
+
+        &:after {
+            border: 2px solid $aqua-marine;
+            opacity: 0;
+        }
+    }
+
+    &__wr {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        overflow: hidden;
+        border: solid rem(6) $slate;
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &--no-hover {
+        cursor: default;
+    }
+}
+
+.items-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: rem(-64);
+    @include respond-to($bigTablet) {
+        justify-content: space-between;
+        margin-right: 0;
+    }
+    @include respond-to($smallTablet) {
+        justify-content: flex-start;
+    }
+
+    .product-item:last-child {
+        @include respond-to($smallTablet) {
+            margin-bottom: rem(4);
+        }
+    }
+
+    &--small {
+        flex-wrap: nowrap;
+        margin-right: -20%;
+        @include respond-to($bigTablet) {
+            justify-content: flex-start;
+            margin: 0 rem(-24);
+            padding: 0 rem(24) rem(28);
+            overflow: auto;
+
+            &:after {
+                content: '';
+                flex-shrink: 0;
+                display: block;
+                width: rem(24);
+            }
+        }
+    }
+}
+
+.product-item {
+    position: relative;
+    width: rem(110);
+    margin-right: rem(64);
+    margin-bottom: rem(34);
+    flex-shrink: 0;
+
+    &:last-child {
+        @include respond-to($smallTablet) {
+            margin-bottom: 0;
+        }
+    }
+
+    &:hover {
+        .round-preview__border {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__link {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        background: rgba(white, 0);
+        font-size: 0;
+    }
+
+    &__thumb {
+        position: relative;
+    }
+
+    &__img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__info {
+        margin-top: rem(6);
+        @include font(13);
+        @include FontFiraBold;
+        text-align: center;
+    }
+
+    &__type {
+        color: rgba($white, 0.5);
+        letter-spacing: rem(0.3);
+        line-height: 1.38;
+        text-transform: uppercase;
+    }
+
+    &__name {
+        margin-top: rem(4);
+        color: $white;
+        line-height: 1.23;
+    }
+}
+
+.product-item:not(.product-item--small) {
+    @include respond-to($bigTablet) {
+        display: flex;
+        align-items: center;
+        width: 47%;
+        margin-right: 0;
+        margin-bottom: rem(26);
+    }
+    @include respond-to($smallTablet) {
+        width: 100%;
+    }
+
+    .product-item__thumb {
+        @include respond-to($bigTablet) {
+            flex-shrink: 0;
+            width: rem(110);
+            margin-right: rem(12);
+        }
+    }
+
+    .product-item__info {
+        @include respond-to($bigTablet) {
+            text-align: left;
+        }
+    }
+
+    .product-item__name {
+        @include respond-to($bigTablet) {
+            margin-top: rem(8);
+        }
+    }
+}
+
+.product-item--small {
+    margin-right: 8%;
+    margin-bottom: 0;
+    @include respond-to($bigTablet) {
+        width: rem(110);
+        margin-right: rem(23);
+
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+
+.product {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    @include respond-to($bigTablet) {
+        margin-top: rem(8);
+    }
+
+    &-left {
+        width: vw(400);
+        margin-right: vw(42);
+        flex-shrink: 0;
+        @include respond-to($bigTablet) {
+            order: 2;
+            width: 100%;
+            margin-top: rem(32);
+            margin-left: 0;
+        }
+    }
+
+    &-right {
+        flex: 1;
+        @include respond-to($bigTablet) {
+            order: 1;
+            width: 100%;
+        }
+    }
+
+    &-similar {
+        margin-top: rem(35);
+
+        &-list {
+            margin-top: rem(16);
+            @include respond-to($bigTablet) {
+                margin-top: rem(24);
+            }
+        }
+    }
+
+    &-params {
+        margin-top: rem(24);
+        @include respond-to($bigTablet) {
+            margin-top: 0;
+        }
+    }
+}
+
+.product-params {
+    &-item {
+        @include font(13);
+        @include FontFiraBold;
+        letter-spacing: rem(0.3);
+        color: $white;
+
+        & + & {
+            margin-top: rem(14);
+        }
+    }
+
+    &-name {
+        line-height: 1.38;
+        text-transform: uppercase;
+        opacity: 0.5;
+    }
+
+    &-value {
+        line-height: 1.38;
+    }
+}
+
+.types-list {
+    &-title {}
+
+    &-content {
+        column-count: 2;
+        margin-top: rem(32);
+    }
+
+    &-item {
+        width: 85%;
+        @include font(16);
+        line-height: 1.19;
+        color: rgba($white, 0.7);
+
+        & + & {
+            margin-top: rem(12);
+        }
+    }
+
+    &-link {
+        color: rgba($white, 0.7);
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: $white;
+        }
+    }
+}
+
+.order-btn {
+    position: relative;
+    display: flex;
+    max-width: rem(176);
+    @include font(16);
+    @include FontFiraBold;
+    color: $white;
+    text-decoration: underline;
+    text-decoration-skip: ink;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    transition: color 0.3s ease;
+    @include respond-to($bigTablet) {
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        color: $aqua-marine;
+        @include respond-to($bigTablet) {
+            color: $white;
+        }
+    }
+
+    &__text {
+        position: relative;
+        margin: auto;
+
+        &:after,
+        &:before {
+            content: '';
+            position: absolute;
+            top: rem(-2);
+            left: rem(-26);
+            width: rem(20);
+            height: rem(20);
+            @include standart-bg;
+            opacity: 0;
+            transition: all 0.2s ease;
+        }
+
+        &:before {
+            background-image: svg-load('../svg/arrow.svg', fill=$white);
+            transform: scale(0);
+        }
+
+        &:after {
+            background-image: svg-load('../svg/arrow.svg', fill=$aqua-marine);
+        }
+    }
+
+    &.is-added {
+        max-width: rem(192);
+        text-decoration: none;
+        @include respond-to($bigTablet) {
+            color: $aqua-marine;
+            border-color: $aqua-marine;
+        }
+
+        .order-btn__text {
+            &:before {
+                opacity: 1;
+                transform: scale(1);
+                @include respond-to($bigTablet) {
+                    opacity: 0;
+                }
+            }
+
+            &:after {
+                @include respond-to($bigTablet) {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &:hover {
+            .order-btn__text:before {
+                opacity: 0;
+            }
+
+            .order-btn__text:after {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.product-mobile-droplist {
+    margin-bottom: rem(24);
+}

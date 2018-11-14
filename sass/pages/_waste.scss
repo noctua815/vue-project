@@ -1,0 +1,166 @@
+.type-nav {
+    &__item {
+        position: relative;
+        @include FontFiraBold;
+        @include font(16);
+        line-height: 1.19;
+        overflow: hidden;
+
+        & + & {
+            margin-top: rem(14);
+        }
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        color: $white;
+        opacity: 0.7;
+        transform: translateX(-1.1rem);
+        transition: all 0.3s ease-in;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &:before {
+            content: '';
+            display: block;
+            width: rem(14);
+            height: rem(14);
+            margin-right: rem(3);
+            background: svg-load('../svg/polygon.svg', stroke=$aqua-marine);
+            @include standart-bg;
+            opacity: 0;
+            backface-visibility: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        &.router-link-active {
+            transform: translateX(0);
+            opacity: 1;
+
+            &:before {
+                opacity: 1;
+                transition: opacity 0.3s ease 0.2s;
+            }
+        }
+    }
+}
+
+.waste {
+    &-list {
+        margin-top: rem(30);
+        @include respond-to($bigPhone) {
+            margin-top: rem(24);
+        }
+    }
+}
+
+.waste-item {
+    display: flex;
+    @include respond-to($bigPhone) {
+        display: block;
+    }
+
+    & + & {
+        margin-top: rem(40);
+        @include respond-to($bigPhone) {
+            margin-top: rem(50);
+        }
+    }
+
+    &__thumb {
+        width: rem(180);
+        flex-shrink: 0;
+        margin-right: rem(30);
+        @include respond-to($bigTablet) {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+
+    &__info {
+        flex: 1;
+        @include FontFiraBold;
+    }
+
+    &__name {
+        @include FontFiraBold;
+        @include font(24);
+        line-height: 1.25;
+        color: rgba($white, 0.5);
+        @include respond-to($bigTablet) {
+            @include font(18);
+            line-height: normal;
+            letter-spacing: rem(0.4);
+        }
+    }
+
+    &__text {
+        margin-top: rem(8);
+        @include FontFiraBold;
+        @include font(16);
+        @include respond-to($bigTablet) {
+            margin-top: rem(14);
+        }
+    }
+
+    &__add {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        flex-wrap: wrap;
+        margin-top: rem(26);
+        @include respond-to($bigPhone) {
+            display: block;
+            margin-top: rem(20);
+        }
+    }
+
+    &__price {
+        @include FontFiraBold;
+        display: flex;
+        align-items: baseline;
+        margin-right: rem(30);
+        @include respond-to($bigPhone) {
+            margin: 0 0 0 rem(14);
+        }
+
+        &-text {
+            @include font(13);
+            letter-spacing: rem(0.3);
+            color: rgba($white, 0.5);
+            text-transform: uppercase;
+            margin-right: rem(16);
+        }
+
+        &-value {
+            @include font(16);
+        }
+    }
+
+    &__btn {
+        @include respond-to($bigPhone) {
+            margin-top: rem(30);
+
+            .btn {
+                margin: 0 auto;
+            }
+        }
+    }
+
+    &__mobile-preview {
+        margin-top: rem(23);
+    }
+}
+
+.zoom-window-waste {
+    margin-top: rem(19);
+}
+
+.waste-tabs {
+    @include respond-to($bigTablet) {
+        margin-bottom: rem(30);
+    }
+}

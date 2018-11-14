@@ -1,0 +1,157 @@
+// Main page
+
+.mp {
+    padding-top: vh(140);
+    @include respond-to($bigTablet) {
+        padding: rem(112) 0 0;
+    }
+
+    &:after {
+        content: '';
+        display: block;
+        width: 100%;
+        height: rem(92);
+        display: none;
+        @include respond-to($bigTablet) {
+            display: block;
+        }
+    }
+
+    &-content {
+        flex: 1;
+        display: flex;
+        @include respond-to($bigTablet) {
+            display: block;
+            max-width: rem(680);
+            margin: 0 auto;
+        }
+    }
+
+    &-tabs {
+        width: vw(720);
+        flex-shrink: 0;
+        padding-right: vw(40);
+        @include respond-to($bigTablet) {
+            width: 100%;
+            padding-right: 0;
+        }
+    }
+}
+
+.mp-tabs-triggers {
+    @include respond-to($bigTablet) {
+        display: none;
+    }
+}
+
+.mp-tabs-panels {
+    margin-top: rem(32);
+}
+
+.mp-prod {
+    width: rem(660);
+    @include respond-to($bigTablet) {
+        width: 100%;
+    }
+
+    &-text {
+        margin-top: rem(24);
+        @include respond-to($bigTablet) {
+            margin-top: rem(14);
+        }
+    }
+
+    &-sub {
+        margin-top: rem(24);
+        @include respond-to($bigTablet) {
+            margin-top: rem(26);
+        }
+    }
+
+    &-link {
+        width: rem(240);
+        margin-top: rem(42);
+        @include respond-to($bigTablet) {
+            margin: rem(72) 0 0;
+        }
+    }
+}
+
+.mp-products {
+    flex: 1;
+    margin-top: rem(12);
+    @include respond-to($bigTablet) {
+        margin-top: rem(54);
+    }
+
+    &-nav {
+        margin-top: rem(24);
+        margin-left: rem(128);
+        @include respond-to($bigTablet) {
+            margin-left: 0;
+        }
+    }
+
+    &-link {
+        display: block;
+        @include font(16);
+        @include FontFiraBold;
+        color: $white;
+        opacity: 0.7;
+        line-height: 1.43;
+        transition: opacity 0.3s ease;
+
+        @include respond-to($bigTablet) {
+            @include font(18);
+        }
+
+        & + & {
+            margin-top: rem(24);
+        }
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+.mp-plus {
+    display: flex;
+
+    & + & {
+        margin-top: rem(28);
+    }
+
+    &__img {
+        flex-shrink: 0;
+        width: rem(27);
+    }
+
+    &__info {
+        flex: 1;
+        margin-left: rem(8);
+    }
+
+    &__text {
+        margin-top: rem(9);
+    }
+}
+
+.plus-icon {
+    display: block;
+    width: rem(27);
+    height: rem(31);
+    @include standart-bg;
+
+    &-1 {
+        background-image: svg-load('../svg/pluses/plus-1.svg');
+    }
+
+    &-2 {
+        background-image: svg-load('../svg/pluses/plus-2.svg');
+    }
+
+    &-3 {
+        background-image: svg-load('../svg/pluses/plus-3.svg');
+    }
+}
